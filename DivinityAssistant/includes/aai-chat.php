@@ -4,15 +4,17 @@
 add_shortcode('DivinityAssistant', 'renderizar_mi_chat');
 
 function renderizar_mi_chat() {
-    ob_start();
+ob_start();
     ?>
     <div id="mi-chat-container">
         <div id="chat-mensajes">
             <!-- Aquí se mostrarán los mensajes -->
         </div>
         
-        <textarea id="chat-input" placeholder="Escribe tu mensaje..."></textarea>
-        <button id="chat-enviar">Enviar</button>
+        <div id="mi-chat-input-container">
+            <textarea id="chat-input" placeholder="Escribe tu mensaje..."></textarea>
+            <button id="chat-enviar">Enviar</button>
+        </div>
     </div>
     
     <script>
@@ -27,7 +29,9 @@ function renderizar_mi_chat() {
         #mi-chat-container {
             border: 1px solid #ddd;
             padding: 10px;
-            width: 300px;
+            width: 100%;
+            display: flex;
+            flex-direction: column; /* Para asegurarse de que los elementos hijos se apilen verticalmente */
         }
 
         #chat-mensajes {
@@ -35,17 +39,23 @@ function renderizar_mi_chat() {
             overflow-y: auto;
             padding: 10px;
             border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        /* El contenedor para el textarea y el botón */
+        #mi-chat-input-container {
+            display: flex; /* Habilitar flexbox */
+            width: 100%;
         }
 
         #chat-input {
-            width: 100%;
+            flex-grow: 1; /* Hace que el textarea ocupe todo el espacio disponible */
             padding: 5px;
+            margin-right: 10px; /* Espacio entre el textarea y el botón */
         }
 
         #chat-enviar {
-            width: 100%;
             padding: 5px;
-            margin-top: 10px;
         }
     </style>
     <?php
