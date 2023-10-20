@@ -2,7 +2,8 @@
 
 <script>
     function getGPT3Response(prompt, callback) {
-        fetch("aai-peticiones-openai.php", {
+        console.log(prompt)
+        fetch("http://localhost/wordpress/wp-content/plugins/DivinityAssistant/includes/aai-peticiones-openai.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -11,8 +12,12 @@
                 prompt: prompt
             })
         })
-        .then(response => response.json())
+        .then(response =>{
+            console.log(response)
+            return response.json()
+        } )
         .then(data => {
+            console.log("Entro 2")
             callback(data.response);
         })
         .catch(error => {
@@ -20,3 +25,6 @@
         });
     }
 </script>
+
+
+

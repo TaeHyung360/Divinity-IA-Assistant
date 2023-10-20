@@ -1,16 +1,16 @@
 <?php
-$apiKey = get_option('aai_clave', '');
 
+//$apiKey = get_option('aai_clave', '');
+$apiKey = "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";
+// 1. Recopilación de datos
 $data = json_decode(file_get_contents('php://input'), true);
-$prompt = $data['prompt'];
-
+//$prompt = $data['prompt'];
+$prompt = "Capital de España";
 $model = "gpt-3.5-turbo";
 $messages = [
     ["role" => "system", "content" => "dame una respuesta larga"],
     ["role" => "user", "content" => $prompt]
 ];
-
-$response = [];
 
 $options = [
     'http' => [
@@ -27,14 +27,18 @@ $options = [
 ];
 
 $context = stream_context_create($options);
-$result = file_get_contents("https://api.openai.com/v1/engines/" . $model . "/completions", false, $context);
+$result = @file_get_contents("https://api.openai.com/v1/engines/" . $model . "/completions", false, $context);
+$response = [];
 
 if ($result === FALSE) {
     $response['error'] = "Hubo un problema con la solicitud.";
 } else {
     $data = json_decode($result, true);
     $response['response'] = $data['choices'][0]['message']['content'];
+    echo json_encode($data);
 }
 
+// 3. Enviar respuesta
 echo json_encode($response);
+
 ?>
