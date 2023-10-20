@@ -30,6 +30,8 @@ function aai_admin_page() {
 // Al inicio del archivo, añade:
 require_once plugin_dir_path(__FILE__) . 'aai-chat.php';
 
-// Include mfp-chatgpt.php for functions related to GPT-4 communication
-//require_once plugin_dir_path(__FILE__) . 'mfp-chatgpt-ia.php';
+
+require_once plugin_dir_path(__FILE__) . 'aai-peticiones-openai.php';
+
+require_once plugin_dir_path(__FILE__) . 'aai-api-request.php';
 ?>
