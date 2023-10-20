@@ -23,8 +23,8 @@ function aai_Add_My_Admin_Link() {
 }
 
 // Función para generar el contenido de la página.
-function mfp_admin_page() {
-    include(plugin_dir_path(__FILE__) . 'mfp-first-acp-page.php');
+function aai_admin_page() {
+    include(plugin_dir_path(__FILE__) . 'aai-pagina-opciones.php');
 }
 
 // Al inicio del archivo, añade:
