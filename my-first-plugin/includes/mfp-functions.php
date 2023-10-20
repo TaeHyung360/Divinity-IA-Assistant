@@ -30,8 +30,8 @@ function mfp_admin_page() {
 }
 
 // Al inicio del archivo, añade:
-require_once plugin_dir_path(__FILE__) . 'mfp-chat-shortcode.php';
+require_once plugin_dir_path(__FILE__) . 'mfp-shortcode-chat.php';
 
 // Include mfp-chatgpt.php for functions related to GPT-4 communication
-require_once plugin_dir_path(__FILE__) . 'mfp-chatgpt.php';
+require_once plugin_dir_path(__FILE__) . 'mfp-chatgpt-ia.php';
 ?>
