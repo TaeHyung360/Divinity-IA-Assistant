@@ -1,23 +1,23 @@
 <?php
 /*
-    Añade un nuevo menú al Panel de Control de Administrador
+    Añado un nuevo menú al Panel de Control de Administrador
 */
 
 add_action('admin_menu', 'aai_Add_My_Admin_Link');
 add_action('admin_init', 'aai_register_settings');
 
-// Registra la configuración de la opción
+// Registro la configuración de la opción
 function aai_register_settings() {
     register_setting('aai_settings_group', 'mfp_clave');
 }
 
-// Agregar un nuevo enlace de menú de nivel superior
+// Agrego un nuevo enlace de menú de nivel superior
 function aai_Add_My_Admin_Link() {
     add_menu_page(
         'Divinity IA Assistant', // Titulo de la pagina
         'Divinity IA Assistant', // Texto para mostrar en el enlace del menu
         'manage_options', // Requisito de capacidad para ver el enlace.
-        'aai_admin_page_slug', // Una babosa única para la página de administracion
+        'aai_admin_page_slug', 
         'aai_admin_page' //  Función de devolución de llamada para mostrar el contenido de la página.
     );
 }
