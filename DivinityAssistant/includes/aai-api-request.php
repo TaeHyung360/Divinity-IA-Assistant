@@ -12,13 +12,14 @@
                 prompt: prompt
             })
         })
-        .then(response =>{
-            console.log(response)
-            return response.json()
-        } )
+        .then(response => response.json())
         .then(data => {
-            console.log("Entro 2")
-            callback(data.response);
+            console.log(data);
+            if (data.response) {
+                callback(data.response);
+            } else if (data.error) {
+                console.error("Error:", data.error);
+            }
         })
         .catch(error => {
             console.error("Error:", error);

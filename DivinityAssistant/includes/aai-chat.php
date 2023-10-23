@@ -22,13 +22,7 @@ ob_start();
     </div>
     
     <script>
-        /*
-        document.getElementById('chat-enviar').addEventListener('click', function() {
-            let mensaje = document.getElementById('chat-input').value;
-            document.getElementById('chat-mensajes').innerHTML += '<p>' + mensaje + '</p>';
-            document.getElementById('chat-input').value = '';
-        });
-        */
+
 
         document.getElementById('chat-enviar').addEventListener('click', function() {
             let mensaje = document.getElementById('chat-input').value;
@@ -52,7 +46,7 @@ ob_start();
         }
 
         #chat-mensajes {
-            max-height: 200px;
+            height: 20rem;
             overflow-y: auto;
             padding: 10px;
             border: 1px solid #ccc;
