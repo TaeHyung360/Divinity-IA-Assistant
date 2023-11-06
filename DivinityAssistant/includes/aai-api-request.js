@@ -9,23 +9,35 @@ function getGPT3Response(prompt, callback) {
     // Muestra el icono de carga
     document.getElementById('loading').style.display = 'block';
     document.getElementById('chat-enviar').style.display = 'none';
+
+    const formData = new URLSearchParams();
+    formData.append('action', 'chat_action');
+    formData.append('prompt', prompt);
+    
     // Realizo una petición HTTP de tipo POST a un script PHP alojado en mi servidor local.
     fetch("http://localhost/DivinityPCrafter/wp-content/plugins/DivinityAssistant/includes/aai-peticiones-openai.php", {
         method: "POST", // Indico que la petición es de tipo POST.
-        headers: {
-            "Content-Type": "application/json", // Especifico que estoy enviando datos en formato JSON.
-        },
-        body: JSON.stringify({
-            prompt: prompt // Convierto el objeto que contiene el prompt a una cadena JSON para enviarlo.
-        })
+        //headers: {
+            //"Content-Type": "application/json", // Especifico que estoy enviando datos en formato JSON.
+        //},
+        //body: JSON.stringify({
+            //prompt: prompt // Convierto el objeto que contiene el prompt a una cadena JSON para enviarlo.
+        //})
+        body: formData
     })
-    .then(response => response.json()) // Convierto la respuesta del servidor de formato JSON a un objeto JavaScript.
+    //.then(response => response.json()) // Convierto la respuesta del servidor de formato JSON a un objeto JavaScript.
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); // Procesamos la respuesta como JSON aquí
+    })
     .then(data => {
         // Oculta el icono de carga
         document.getElementById('loading').style.display = 'none';
         document.getElementById('chat-enviar').style.display = 'block';
         // Verifico si la respuesta incluye el campo "response".
-        if (data.response) {
+        if (data && data.response) {
             // Si es así, ejecuto la función de devolución de llamada, pasándole la respuesta de GPT-3.
             callback(data.response);
         } else if (data.error) {

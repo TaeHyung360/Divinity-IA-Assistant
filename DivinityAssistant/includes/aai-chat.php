@@ -53,7 +53,7 @@ function renderizar_mi_chat() {
                 // Envío el mensaje a la función getGPT3Response para obtener una respuesta.
                 getGPT3Response(mensaje, function(respuesta) {
                     // Añado la respuesta de GPT-3 al área de mensajes.
-                    document.getElementById('chat-mensajes').innerHTML += '<p>GPT-3: ' + respuesta + '</p>';
+                    document.getElementById('chat-mensajes').innerHTML += '<p>RA : ' + respuesta + '</p>';
                 });
                 // Limpio el área de entrada para el próximo mensaje.
                 document.getElementById('chat-input').value = '';
