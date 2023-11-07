@@ -17,15 +17,8 @@ function getGPT3Response(prompt, callback) {
     // Realizo una petición HTTP de tipo POST a un script PHP alojado en mi servidor local.
     fetch("http://localhost/DivinityPCrafter/wp-content/plugins/DivinityAssistant/includes/aai-peticiones-openai.php", {
         method: "POST", // Indico que la petición es de tipo POST.
-        //headers: {
-            //"Content-Type": "application/json", // Especifico que estoy enviando datos en formato JSON.
-        //},
-        //body: JSON.stringify({
-            //prompt: prompt // Convierto el objeto que contiene el prompt a una cadena JSON para enviarlo.
-        //})
         body: formData
     })
-    //.then(response => response.json()) // Convierto la respuesta del servidor de formato JSON a un objeto JavaScript.
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');

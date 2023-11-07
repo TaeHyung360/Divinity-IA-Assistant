@@ -32,5 +32,4 @@ require_once plugin_dir_path(__FILE__) . 'aai-chat.php';
 
 require_once plugin_dir_path(__FILE__) . 'aai-peticiones-openai.php';
 
-//require_once plugin_dir_path(__FILE__) . 'aai-api-request.php';
 ?>

@@ -7,20 +7,9 @@
         
             // Establezco la clave API de OpenAI directamente.
 
-            //$apiKey = get_option('aai_clave','');
+            
+            $apiKey = get_option('aai_clave','');
             //var_dump($apiKey); // cadena de la clave API.
-            // Obtengo los datos de la petición POST en formato JSON y los decodifico para poder trabajar con ellos en PHP
-            //$input = file_get_contents("php://input");
-            //$data = json_decode($input, true);
-
-            // Verifico que se haya recibido un prompt.
-            //if (empty($data['prompt'])) {
-                //echo json_encode(array("error" => "El prompt no puede estar vacío."));
-                //exit;
-            //}
-            // Utilizo el prompt que viene en los datos de la petición. Esto es lo que el usuario ha enviado y es lo que se le pedirá a OpenAI que responda.
-            //$prompt = $data['prompt'];
-            //$prompt = "Saluda";
             $prompt = $_POST['prompt'] ?? ''; //comprobar si una variable existe y no es null, y si es así, devuelve su valor. Si no existe o su valor es null, devuelve el valor que se encuentra a la derecha del operador.
             if (empty($prompt)) {
                 echo json_encode(array("error" => "El prompt no puede estar vacío."));
